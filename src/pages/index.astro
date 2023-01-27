@@ -1,0 +1,67 @@
+---
+import MainLayout from '@layouts/MainLayout.astro'
+import FeaturedCardsLayout from '@layouts/FeaturedCardsLayout.astro'
+import LinksLayout from '@layouts/LinksLayout.astro'
+import Avatar from '@components/Avatar.astro'
+import FeaturedCard from '@components/FeaturedCard.astro'
+import Link from '@components/Link.astro'
+import Social from '@components/Social.astro'
+
+const data = [
+  {
+    icon: 'logos:patreon',
+    title: 'Support Us!',
+    link: 'https://www.patreon.com/stefanrows'
+  },
+  {
+    icon: 'logos:discord-icon',
+    title: 'Join the Community!',
+    link: 'https://discord.com'
+  }
+]
+
+const links = [
+  {
+    title: '🧑‍🚀 Astro',
+    description: 'Astro Homepage',
+    url: 'https://astro.build'
+  },
+  {
+    title: '🌐 My Portfolio',
+    description: 'Look at my portfolio',
+    url: 'https://majortom.space'
+  },
+  {
+    title: '📽️ YouTube',
+    description: 'Visit my Youtube channel!',
+    url: 'https://youtube.com/c/eosfelipe'
+  }
+]
+---
+
+<MainLayout title="Astro LinkTree Clone">
+  <Avatar />
+  <FeaturedCardsLayout>
+    {
+      data.map((item) => (
+        <FeaturedCard
+          featuredCardIcon={item.icon}
+          featuredCardTitle={item.title}
+          featuredCardLink={item.link}
+        />
+      ))
+    }
+  </FeaturedCardsLayout>
+  <LinksLayout>
+    {
+      links.map((link) => (
+        <Link
+          linkTitle={link.title}
+          linkDescription={link.description}
+          linkUrl={link.url}
+        />
+      ))
+    }
+  </LinksLayout>
+  <Social />
+</MainLayout>
