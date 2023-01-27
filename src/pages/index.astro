@@ -7,6 +7,7 @@ import FeaturedCard from '@components/FeaturedCard.astro'
 import Link from '@components/Link.astro'
 import Social from '@components/Social.astro'
 
+const links = await Astro.glob('./links/*.md')
 const data = [
   {
     icon: 'logos:patreon',
@@ -17,24 +18,6 @@ const data = [
     icon: 'logos:discord-icon',
     title: 'Join the Community!',
     link: 'https://discord.com'
-  }
-]
-
-const links = [
-  {
-    title: '🧑‍🚀 Astro',
-    description: 'Astro Homepage',
-    url: 'https://astro.build'
-  },
-  {
-    title: '🌐 My Portfolio',
-    description: 'Look at my portfolio',
-    url: 'https://majortom.space'
-  },
-  {
-    title: '📽️ YouTube',
-    description: 'Visit my Youtube channel!',
-    url: 'https://youtube.com/c/eosfelipe'
   }
 ]
 ---
@@ -56,9 +39,9 @@ const links = [
     {
       links.map((link) => (
         <Link
-          linkTitle={link.title}
-          linkDescription={link.description}
-          linkUrl={link.url}
+          linkTitle={link.frontmatter.linkTitle}
+          linkDescription={link.frontmatter.linkDescription}
+          linkUrl={link.frontmatter.linkURL}
         />
       ))
     }
